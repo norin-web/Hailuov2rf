@@ -6,7 +6,7 @@ Promo site for the Hailuo iPhone app (text to video). Design: Paper file "Hailuo
 
 ```bash
 pnpm install
-pnpm dev        # http://localhost:5173/Hailuov2rf/
+pnpm dev        # http://localhost:5173/
 pnpm build      # → dist/
 ```
 
@@ -14,7 +14,7 @@ pnpm build      # → dist/
 
 Push to `main` → GitHub Actions builds and publishes to GitHub Pages (`.github/workflows/deploy.yml`, pnpm via `pnpm/action-setup`). `dist/404.html` is a copy of `index.html` so deep links work.
 
-**`base` trap:** no custom domain yet, so `vite.config.ts` has `base: "/Hailuov2rf/"`. When a domain is attached in Pages settings, switch to `base: "/"` **and** add `public/CNAME` in the same commit, or every asset 404s and the page is blank.
+**`base` trap:** served from the custom domain hailio.casa (`public/CNAME`), so `vite.config.ts` has `base: "/"`. If the domain is removed, switch back to `base: "/Hailuov2rf/"` and delete `public/CNAME` in the same commit, or every asset 404s and the page is blank.
 
 ## Where things live
 
