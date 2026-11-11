@@ -532,7 +532,7 @@ ul, ol { padding: 0; list-style: none; }
 }
 
 /* ── support: chips + answer in a prompt field ────────────── */
-.shero { position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 100px var(--gutter) 72px; text-align: center; }
+.shero { position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 100px var(--gutter) 72px; text-align: center; overflow-x: clip; }
 .shero__glow { position: absolute; left: 50%; top: -100px; width: 800px; height: 600px; translate: -50% 0; background: radial-gradient(ellipse 50% 50% at 50% 40%, var(--violet-22) 0%, transparent 70%); pointer-events: none; }
 .shero > *:not(.shero__glow) { position: relative; }
 .ask { display: flex; flex-direction: column; align-items: center; gap: 40px; padding-bottom: 120px; }
