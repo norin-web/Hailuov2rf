@@ -163,7 +163,7 @@ function Pro() {
     <section className="section pro container">
       <div className="center-head">
         <h2 className="h2">Go Pro when you need more.</h2>
-        <p className="lead">Try it free first. Manage or cancel any time in your Apple ID settings.</p>
+        <p className="lead">Try it free first. Manage or cancel any time in your Apple Account.</p>
       </div>
       <Reveal className="pro__card">
         <div className="pro__body">

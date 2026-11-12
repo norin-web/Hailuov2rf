@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__copy">
-        <span>© {site.year} {site.operator}. {site.disclaimer}</span>
+        <span>© {site.year} {site.operator.replace(/\.?$/, ".")} {site.disclaimer}</span>
         <button onClick={() => scrollTo({ top: 0, behavior: "smooth" })}>Back to top ↑</button>
       </div>
     </footer>

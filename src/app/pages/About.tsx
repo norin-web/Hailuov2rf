@@ -20,7 +20,7 @@ export default function About() {
         <span className="kicker split-sec__side">Our approach</span>
         <Reveal as="p" className="approach">
           No timeline, no layers, no export menu. One prompt field, three settings you can read at a glance, and a library
-          of everything you made. The hard part happens on our side.
+          of everything you made. The heavy lifting is done by AI in the cloud.
         </Reveal>
       </section>
 
@@ -38,8 +38,8 @@ export default function About() {
           <div>
             <span className="kicker">Who makes it</span>
             <p>
-              Hailuo for iPhone is developed and published by {site.operator}. Questions about the app, your subscription or
-              your data go to one inbox.
+              Hailuo for iPhone is developed and operated by {site.operator}, {site.address}. Questions about the app, your
+              subscription or your data go to one inbox.
             </p>
           </div>
           <a className="maker__mail" href={`mailto:${site.email}`}>{site.email}</a>

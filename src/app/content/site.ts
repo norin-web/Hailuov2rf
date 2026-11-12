@@ -1,14 +1,15 @@
 // Every brand / app fact lives here so names, IDs and emails are never duplicated.
-// PLACEHOLDER values are marked — replace them when the owner sends the documents
-// (operator, disclaimer) or when the app goes live (run the iTunes lookup for `app`).
+// Operator and disclaimer come from the owner's Privacy Policy / Terms (2026-11-12).
+// PLACEHOLDER values in `app` wait for the store release (run the iTunes lookup); rows with them are hidden.
 
 export const site = {
   brand: "Hailuo",
   email: "dragan@mag-drvod.store",
   year: new Date().getFullYear(),
-  operator: "PLACEHOLDER operator",
-  // Wording must come from the owner's Privacy Policy / Terms (Hailuo is a MiniMax brand).
-  disclaimer: "PLACEHOLDER — trademark disclaimer from the owner's documents.",
+  operator: "MAG-DRVO d.o.o.",
+  address: "Prvča 96 b, 35400 Nova Gradiška, Croatia",
+  // From Terms of Use, sections 1 and 10 ("The App" → "Hailuo").
+  disclaimer: "Hailuo is an independent software product. Names, trademarks, and service marks of third parties remain the property of their respective owners.",
 };
 
 export const app = {
@@ -93,19 +94,23 @@ export const appScreens = [
   { tag: "My Library", title: "Every clip you made, in one grid.", text: "Open any video from your history to watch it again, regenerate it, share it or delete it. Trending sits next door with ready prompts to reuse.", phone: phones.library },
 ];
 
-export const specs: [string, string][] = [
-  ["Made for", `iPhone · iOS ${app.minIOS} or later`],
+const known = (v: string) => !v.startsWith("PLACEHOLDER");
+
+export const specs = ([
+  ["Made for", known(app.minIOS) ? `iPhone · iOS ${app.minIOS} or later` : "iPhone"],
   ["Category", app.category],
   ["Video settings", "Quality up to 2K · length 5s · frame up to 21:9"],
+  ["Account", "Not needed, no sign-up"],
+  ["Your videos", "Kept on your iPhone, save to Photos"],
   ["Price", "Free, Pro subscription with a free trial"],
   ["Languages", app.languages],
   ["Developer", site.operator],
-];
+] as [string, string][]).filter(([, v]) => known(v));
 
 export const principles = [
   { title: "Words first", text: "Everything starts in the prompt field. Enhance prompt helps when you are not sure how to describe a shot." },
   { title: "Settings you can read", text: "Quality, length and frame sit right under the text: 2K, 5s, 21:9. Nothing is hidden in menus." },
-  { title: "Try before you pay", text: "Pro starts with a free trial. Subscriptions are handled by Apple, so you can cancel or restore them in your Apple ID settings." },
+  { title: "Try before you pay", text: "Pro starts with a free trial. Subscriptions are handled by Apple, so you can cancel or restore them in your Apple Account." },
 ];
 
 export const faq = [
@@ -113,11 +118,14 @@ export const faq = [
   { short: "Enhance prompt", q: "What does Enhance prompt do?", a: "It turns a short idea into a detailed description, so the result comes out closer to what you pictured. Tap Enhance prompt above the field; you can cancel while it works.", tags: ["Prompt"] },
   { short: "Start from a photo", q: "Can I start from a photo?", a: "Yes. Tap the plus button in the prompt field and pick a photo from your library or take a new one. The app asks for access to Photos or Camera the first time.", tags: ["Create", "Photos"] },
   { short: "2K, 5s, 21:9", q: "What do 2K, 5s and 21:9 mean?", a: "They are the video settings under the prompt: quality, clip length and frame shape. Tap them to change before you create.", tags: ["Settings"] },
-  { short: "Saved videos", q: "Where are my videos saved?", a: "Every clip you create appears in My Library (History). Tap Download on a video to save it to your iPhone's Photos library.", tags: ["Library"] },
+  { short: "Saved videos", q: "Where are my videos saved?", a: "Every clip you create is kept on your iPhone in My Library (History); there is no cloud copy. Tap Download on a video to save it to your Photos library.", tags: ["Library"] },
   { short: "Reuse a trend", q: "How do I reuse a trend?", a: "Open Trending, pick a video and read the prompt behind it. Tap Reuse video to start your own clip from that prompt.", tags: ["Trending"] },
-  { short: "Free trial", q: "How does the free trial work?", a: "Pro can start with a free trial shown on the subscription screen. Apple shows the price and trial length before you confirm. Cancel before it ends in your Apple ID settings if you don't want to continue.", tags: ["Billing", "Apple ID"] },
-  { short: "Cancel subscription", q: "How do I cancel my subscription?", a: "Subscriptions are handled by Apple. On your iPhone open Settings, tap your name, then Subscriptions. Choose Hailuo and tap Cancel Subscription. Pro stays active until the end of the period you already paid for.", tags: ["Billing", "Apple ID"] },
-  { short: "Restore purchase", q: "How do I restore a purchase?", a: "Open the subscription screen in the app and tap Restore, using the same Apple ID the purchase was made with. Refunds and billing are handled by Apple.", tags: ["Billing", "Apple ID"] },
-  { short: "Clear history", q: "How do I clear my history?", a: "Open a video in My Library and use the menu to delete it, or clear the whole history from the History screen. Deleted videos can't be restored.", tags: ["Library"] },
+  { short: "Free trial", q: "How does the free trial work?", a: "Pro can start with a free trial shown on the subscription screen. Apple shows the price, billing period and any trial before you confirm. Cancel before it ends in your Apple Account if you don't want to continue.", tags: ["Billing", "Apple Account"] },
+  { short: "Cancel subscription", q: "How do I cancel my subscription?", a: "Subscriptions are handled by Apple. On your iPhone open Settings, tap your name, then Subscriptions. Choose Hailuo and tap Cancel Subscription. Deleting the app does not cancel a subscription.", tags: ["Billing", "Apple Account"] },
+  { short: "Restore purchase", q: "How do I restore a purchase?", a: "Open the subscription screen in the app and tap Restore, using the same Apple Account the purchase was made with. Refunds and billing are handled by Apple.", tags: ["Billing", "Apple Account"] },
+  { short: "Clear history", q: "How do I clear my history?", a: "Open a video in My Library and use the menu to delete it, or clear the whole history from the History screen. A copy you already saved to Photos stays there.", tags: ["Library"] },
   { short: "Photo access", q: "The app can't open my photos", a: "Photo access was probably turned off. Open iPhone Settings → Hailuo → Photos and allow access, then try the plus button again.", tags: ["Photos"] },
+  { short: "Account", q: "Do I need an account?", a: "No. Hailuo works without registration, sign-in or an email address. Your history lives on your iPhone.", tags: ["Privacy"] },
+  { short: "Who sees my prompts", q: "Who sees my prompts and photos?", a: "To make a video, your prompt and any reference photo go to fal.ai, the AI service that generates it. Enhance prompt sends the text to OpenAI. Your videos are not posted publicly or shown to other users. Details are in the Privacy Policy.", tags: ["Privacy"] },
+  { short: "What's not allowed", q: "What can't I create?", a: "Hailuo is not for sexual content, harassment, fraud, deceptive deepfakes of real people or material that breaks someone else's rights. The full list is in the Terms of Use.", tags: ["Terms"] },
 ];
