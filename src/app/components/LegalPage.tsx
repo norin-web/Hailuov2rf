@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { site } from "../content/site";
-import { legalUpdated } from "../content/legal";
 import Split from "./Split";
 import Reveal from "./Reveal";
 import Btn from "./Btn";
@@ -9,7 +8,6 @@ import Btn from "./Btn";
 type Doc = {
   title: string;
   current: string;
-  updated?: string;
   body: string | null;
   glance?: [string, string][];
   other: { to: string; label: string };
@@ -95,7 +93,6 @@ export default function LegalPage({ doc }: { doc: Doc }) {
         <div className="container">
           <Split as="h1" className="h1 lhero__title" parts={[[doc.title]]} />
           <Reveal className="lhero__meta" delay={300}>
-            <div><span>Last updated</span><b>{doc.updated ?? legalUpdated}</b></div>
             <div><span>Sections</span><b>{sections.length}</b></div>
             <div><span>Questions</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
             <div><span>Also read</span><Link to={doc.other.to} className="lhero__other">Read the {doc.other.label}</Link></div>
