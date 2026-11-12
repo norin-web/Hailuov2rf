@@ -49,6 +49,9 @@ function Block({ text }: { text: string }): ReactNode {
     );
   // all-caps legal clauses get a quiet box so they don't shout across the page
   const caps = text.length > 40 && text === text.toUpperCase();
+  // bold lead-in from the document: "**Lead.** rest of the paragraph"
+  const lead = text.match(/^\*\*(.+?)\*\* ([\s\S]*)$/);
+  if (lead) return <p><strong>{lead[1]}</strong> {linkify(lead[2])}</p>;
   return (
     <p className={caps ? "legal-caps" : undefined}>
       {text.split("\n").map((line, i) => (

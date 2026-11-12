@@ -8,8 +8,8 @@ export const site = {
   year: new Date().getFullYear(),
   operator: "MAG-DRVO d.o.o.",
   address: "Prvča 96 b, 35400 Nova Gradiška, Croatia",
-  // From Terms of Use, sections 1 and 10 ("The App" → "Hailuo").
-  disclaimer: "Hailuo is an independent software product. Names, trademarks, and service marks of third parties remain the property of their respective owners.",
+  // From Terms of Use, section 10 ("the App" → "Hailuo").
+  disclaimer: "The HAILUO name is used under a signed written trademark and brand-use authorization granted by the applicable rights holder. Hailuo is not presented as a first-party application owned or operated by Nanonoble Pte. Ltd. or MiniMax.",
 };
 
 export const app = {
